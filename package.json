@@ -1,0 +1,14 @@
+{
+  "name": "@emarketflows/emf-api-client",
+  "version": "1.0.0",
+  "description": "NodeJS client to manage eMarketFlows API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "emarketflows"
+  ],
+  "author": "David Martínez Gracia",
+  "license": "MIT"
+}
