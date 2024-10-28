@@ -1,15 +1,162 @@
-const contacts = require('./api/contacts-service');
-const oauth2 = require('./api/oauth2-service');
-const billing = require('./api/billing-service');
-const notifications = require('./api/notifications-service');
-const inventory = require('./api/inventory-service');
+const axios = require("axios").default;
 
-const MicroServices = {
-    billing,
-    contacts,
-    inventory,
-    notifications,
-    oauth2
-};
+const myCache = require('./cache/cache');
 
-module.exports = MicroServices;
+const api = require("./api/index");
+
+class eMarketFlowsRestApi {
+    constructor(options) {
+        if (!options) {
+            throw new Error('Options must be provided');
+        }
+
+        if (!options.AUTH0_DOMAIN) {
+            throw new Error('AUTH0_DOMAIN must be provided');
+        }
+
+        if (!options.AUTH0_CLIENT_ID) {
+            throw new Error('AUTH0_CLIENT_ID must be provided');
+        }
+
+        if (!options.AUTH0_CLIENT_SECRET) {
+            throw new Error('AUTH0_CLIENT_SECRET must be provided');
+        }
+
+        if (!options.AUTH0_CLIENT_SCOPES) {
+            throw new Error('AUTH0_CLIENT_SCOPES must be provided');
+        }
+
+        this.AUTH0_DOMAIN = options.AUTH0_DOMAIN;
+        this.AUTH0_CLIENT_ID = options.AUTH0_CLIENT_ID;
+        this.AUTH0_CLIENT_SECRET = options.AUTH0_CLIENT_SECRET;
+        this.AUTH0_CLIENT_SCOPES = options.AUTH0_CLIENT_SCOPES;
+    }
+
+    saveToken(token) {
+        const self = this;
+        const success = myCache.set("auth2_token", token);
+        
+        if (!success) {
+            console.error("[oAuth2] eMarket Flows failed to save token to cache.");
+        
+            // Retry saving the token in 2 minutes
+            setTimeout(refreshToken, 120000);
+            return;
+        }
+        
+        // Convert token.expires_in date to milliseconds
+        const expiresInMs = new Date(token.expires_in);
+        
+        // Calculate milliseconds from now to token.expires_in milliseconds
+        const now = new Date();
+        
+        const expiresIn = (expiresInMs.getTime() - now.getTime());
+        
+        console.log('token', token);
+        
+        console.log(`[oAuth2] eMarket Flows token saved, expires in ${expiresIn} milliseconds.`);
+
+
+        
+        // Start a timer to refresh the token before it expires
+        setTimeout(self.refreshToken, expiresIn);
+    }
+
+    authenticate() {
+        const self = this;
+        var options = {
+            method: 'POST',
+            url: `${this.AUTH0_DOMAIN}/token`,
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: {
+            grant_type: 'client_credentials',
+            client_id: this.AUTH0_CLIENT_ID,
+            client_secret: this.AUTH0_CLIENT_SECRET,
+            scope: this.AUTH0_CLIENT_SCOPES
+            }
+        };
+            
+        axios.request(options).then(function (response) {
+            // Save the token to the cache
+            self.saveToken(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+
+    refreshToken() {
+        const self = this;
+        var options = {
+            method: 'POST',
+            url: `${this.AUTH0_DOMAIN}/token`,
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: {
+            grant_type: 'client_credentials',
+            client_id: this.AUTH0_CLIENT_ID,
+            client_secret: this.AUTH0_CLIENT_SECRET,
+            scope: this.AUTH0_CLIENT_SCOPES
+            }
+        };
+            
+        axios.request(options).then(function (response) {
+            // Save the token to the cache
+            self.saveToken(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+}
+
+authenticateRequest = (...scopes) => async (req, res, next) => {
+    try {
+        if (!req.headers.authorization) {
+            throw ({
+                message: "Requires authentication token",
+                status: 401,
+                code: "unauthorized"
+            });
+        }
+
+        var headers = {
+            "Content-Type": "application/json",
+            "Authorization": req.headers.authorization,
+            "x-auth-scopes": scopes.join(" ")
+        };
+
+        if(req.params.organization) {
+            headers["x-auth-organization"] = req.params.organization;
+        }
+
+        if(req.headers["x-auth-organization"]) {
+            headers["x-auth-organization"] = req.headers["x-auth-organization"];
+        }
+        
+        const response = await axios.post(`https://api.emarketflows.io/v1/oauth2/authenticate`, {}, {
+            headers: headers
+        });
+
+        if(!response) {
+            throw ({
+                message: "Unauthorized",
+                status: 401,
+                code: "unauthorized"
+            });
+        }
+
+        req.scope = response.data.scope.split(" ");
+        req.role = response.data.role;
+        req.userId = response.data.user;
+
+        next();
+    } catch (error) {
+        return res.status(error.status || 500).json({
+            message: error.message || "Internal server error",
+            status: error.status || 500,
+            code: error.code || "internal_server_error"
+        });
+    }
+}
+
+module.exports = eMarketFlowsRestApi;
+module.exports.api = api;
+module.exports.authenticateRequest = authenticateRequest;
