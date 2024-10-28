@@ -1,6 +1,6 @@
 {
   "name": "@emarketflows/emf-api-client",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "NodeJS client to manage eMarketFlows API.",
   "main": "index.js",
   "scripts": {
