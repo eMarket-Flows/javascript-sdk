@@ -1,7 +1,7 @@
 {
-  "name": "@emarketflows/emf-api-client",
-  "version": "1.2.6",
-  "description": "NodeJS client to manage eMarketFlows API.",
+  "name": "@emarketflows/sdk",
+  "version": "1.0.0",
+  "description": "NodeJS SDK client to manage eMarketFlows API.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,10 @@
     "emarketflows",
     "api",
     "client",
-    "nodejs"
+    "nodejs",
+    "sdk"
   ],
-  "author": "David Martínez Gracia",
+  "author": "eMarketFlows",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.7.7",

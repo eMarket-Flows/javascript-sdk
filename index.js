@@ -2,7 +2,7 @@
  * eMarketFlowsRestApi class for handling authentication and token management with Auth0.
  */
 
-class eMarketFlowsRestApi {
+class client {
     /**
      * Creates an instance of eMarketFlowsRestApi.
      * @param {Object} options - The configuration options.
@@ -178,6 +178,8 @@ authenticateRequest = (...scopes) => async (req, res, next) => {
     }
 }
 
-module.exports = eMarketFlowsRestApi;
-module.exports.api = api;
+const v1 = require('./v1');
+
+module.exports = client;
+module.exports.v1 = v1;
 module.exports.authenticateRequest = authenticateRequest;
