@@ -4,18 +4,20 @@
 
 Import module:
 ```
-const eMarketFlowsRestApi = require('@emarketflows/emf-api-client');
+const client = require('@emarketflows/emf-api-client');
 
 // Initialize the eMarketFlows API client
-const emfApiClient = new eMarketFlowsRestApi({
-  AUTH0_DOMAIN: config.AUTH0_DOMAIN,
-  AUTH0_CLIENT_ID: config.AUTH0_CLIENT_ID,
-  AUTH0_CLIENT_SECRET: config.AUTH0_CLIENT_SECRET,
-  AUTH0_CLIENT_SCOPES: config.AUTH0_CLIENT_SCOPES
+// Is not necessary export it. This SDK set token in cache
+// and get this when is neccesary and refresh.
+const emfClient = new client({
+  AUTH0_CLIENT_ID: < Client ID >,
+  AUTH0_CLIENT_SECRET: < Client Secret >,
+  AUTH0_CLIENT_SCOPES: < Client Scopes >
 });
 
 // Authenticate the client
-  emfApiClient.authenticate();
+```
+  emfClient.authenticate();
 ```
 
 Check route permissions:

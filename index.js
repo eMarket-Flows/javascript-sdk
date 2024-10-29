@@ -6,7 +6,6 @@ class client {
     /**
      * Creates an instance of eMarketFlowsRestApi.
      * @param {Object} options - The configuration options.
-     * @param {string} options.AUTH0_DOMAIN - The Auth0 domain.
      * @param {string} options.AUTH0_CLIENT_ID - The Auth0 client ID.
      * @param {string} options.AUTH0_CLIENT_SECRET - The Auth0 client secret.
      * @param {string} options.AUTH0_CLIENT_SCOPES - The Auth0 client scopes.
@@ -15,10 +14,6 @@ class client {
     constructor(options) {
         if (!options) {
             throw new Error('Options must be provided');
-        }
-
-        if (!options.AUTH0_DOMAIN) {
-            throw new Error('AUTH0_DOMAIN must be provided');
         }
 
         if (!options.AUTH0_CLIENT_ID) {
@@ -33,7 +28,7 @@ class client {
             throw new Error('AUTH0_CLIENT_SCOPES must be provided');
         }
 
-        this.AUTH0_DOMAIN = options.AUTH0_DOMAIN;
+        this.AUTH0_DOMAIN = 'https://api.emarketflows.io/v1/oauth2';
         this.AUTH0_CLIENT_ID = options.AUTH0_CLIENT_ID;
         this.AUTH0_CLIENT_SECRET = options.AUTH0_CLIENT_SECRET;
         this.AUTH0_CLIENT_SCOPES = options.AUTH0_CLIENT_SCOPES;
