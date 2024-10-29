@@ -33,6 +33,13 @@ One of principal uses of eMarketFlows SDK is be a developer interface to code fa
 | notifications  | push | ✅ | ✅ | ✅ | ✅ | ❌ |
 | oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
 |  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
+| billing  | products | ✅ | ✅ | ✅ | ✅ | ❌ |
+|  | orders | ✅ | ✅ | ❌ | ❌ | ❌ |
+|  | invoices | ✅ | ✅ | ❌ | ❌ | ❌ |
+|  | catalogues | ✅ | ✅ | ❌ | ❌ | ❌ |
+| contacts  | customers | ✅ | ✅ | ✅ | ✅ | ❌ |
+|  | providers | ✅ | ✅ | ❌ | ❌ | ❌ |
+|  | addresses | ✅ | ✅ | ❌ | ❌ | ❌ |
 
 ```js
 /*  */
