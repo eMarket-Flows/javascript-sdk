@@ -14,6 +14,7 @@ const emfClient = new client({
   AUTH0_CLIENT_SECRET: < Client Secret >,
   AUTH0_CLIENT_SCOPES: < Client Scopes >
 });
+```
 
 // Authenticate the client
 ```
