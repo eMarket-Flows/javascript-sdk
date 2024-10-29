@@ -1,14 +1,16 @@
 /**
- * eMarketFlowsRestApi class for handling authentication and token management with Auth0.
+ * eMarketFlowsRestApi class for handling authentication and token management with Auth2.
  */
+
+const config = require('./config.js');
 
 class client {
     /**
      * Creates an instance of eMarketFlowsRestApi.
      * @param {Object} options - The configuration options.
-     * @param {string} options.AUTH0_CLIENT_ID - The Auth0 client ID.
-     * @param {string} options.AUTH0_CLIENT_SECRET - The Auth0 client secret.
-     * @param {string} options.AUTH0_CLIENT_SCOPES - The Auth0 client scopes.
+     * @param {string} options.AUTH2_CLIENT_ID - The Auth2 client ID.
+     * @param {string} options.AUTH2_CLIENT_SECRET - The Auth2 client secret.
+     * @param {string} options.AUTH2_CLIENT_SCOPES - The Auth2 client scopes.
      * @throws Will throw an error if any of the required options are not provided.
      */
     constructor(options) {
@@ -16,22 +18,22 @@ class client {
             throw new Error('Options must be provided');
         }
 
-        if (!options.AUTH0_CLIENT_ID) {
-            throw new Error('AUTH0_CLIENT_ID must be provided');
+        if (!options.AUTH2_CLIENT_ID) {
+            throw new Error('AUTH2_CLIENT_ID must be provided');
         }
 
-        if (!options.AUTH0_CLIENT_SECRET) {
-            throw new Error('AUTH0_CLIENT_SECRET must be provided');
+        if (!options.AUTH2_CLIENT_SECRET) {
+            throw new Error('AUTH2_CLIENT_SECRET must be provided');
         }
 
-        if (!options.AUTH0_CLIENT_SCOPES) {
-            throw new Error('AUTH0_CLIENT_SCOPES must be provided');
+        if (!options.AUTH2_CLIENT_SCOPES) {
+            throw new Error('AUTH2_CLIENT_SCOPES must be provided');
         }
 
-        this.AUTH0_DOMAIN = 'https://api.emarketflows.io/v1/oauth2';
-        this.AUTH0_CLIENT_ID = options.AUTH0_CLIENT_ID;
-        this.AUTH0_CLIENT_SECRET = options.AUTH0_CLIENT_SECRET;
-        this.AUTH0_CLIENT_SCOPES = options.AUTH0_CLIENT_SCOPES;
+        this.AUTH2_DOMAIN = `${config.MS_API_URL}/v1/oauth2`;
+        this.AUTH2_CLIENT_ID = options.AUTH2_CLIENT_ID;
+        this.AUTH2_CLIENT_SECRET = options.AUTH2_CLIENT_SECRET;
+        this.AUTH2_CLIENT_SCOPES = options.AUTH2_CLIENT_SCOPES;
     }
 
     /**
@@ -68,19 +70,19 @@ class client {
     }
 
     /**
-     * Authenticates with Auth0 and saves the token to the cache.
+     * Authenticates with Auth2 and saves the token to the cache.
      */
     authenticate() {
         const self = this;
         var options = {
             method: 'POST',
-            url: `${this.AUTH0_DOMAIN}/token`,
+            url: `${this.AUTH2_DOMAIN}/token`,
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: {
             grant_type: 'client_credentials',
-            client_id: this.AUTH0_CLIENT_ID,
-            client_secret: this.AUTH0_CLIENT_SECRET,
-            scope: this.AUTH0_CLIENT_SCOPES
+            client_id: this.AUTH2_CLIENT_ID,
+            client_secret: this.AUTH2_CLIENT_SECRET,
+            scope: this.AUTH2_CLIENT_SCOPES
             }
         };
             
@@ -93,19 +95,19 @@ class client {
     }
 
     /**
-     * Refreshes the Auth0 token and saves the new token to the cache.
+     * Refreshes the AUTH2 token and saves the new token to the cache.
      */
     refreshToken() {
         const self = this;
         var options = {
             method: 'POST',
-            url: `${this.AUTH0_DOMAIN}/token`,
+            url: `${this.AUTH2_DOMAIN}/token`,
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: {
             grant_type: 'client_credentials',
-            client_id: this.AUTH0_CLIENT_ID,
-            client_secret: this.AUTH0_CLIENT_SECRET,
-            scope: this.AUTH0_CLIENT_SCOPES
+            client_id: this.AUTH2_CLIENT_ID,
+            client_secret: this.AUTH2_CLIENT_SECRET,
+            scope: this.AUTH2_CLIENT_SCOPES
             }
         };
             
@@ -147,7 +149,7 @@ validate = (...scopes) => async (req, res, next) => {
             headers["x-auth-organization"] = req.headers["x-auth-organization"];
         }
         
-        const response = await axios.post(`https://api.emarketflows.io/v1/oauth2/authenticate`, {}, {
+        const response = await axios.post(`${config.MS_API_URL}/v1/oauth2/authenticate`, {}, {
             headers: headers
         });
 
@@ -173,7 +175,7 @@ validate = (...scopes) => async (req, res, next) => {
     }
 }
 
-const v1 = require('./v1');
+const v1 = require('./v1/index');
 
 module.exports = client;
 module.exports.v1 = v1;
