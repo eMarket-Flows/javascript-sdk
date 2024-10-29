@@ -3,17 +3,20 @@
 - Official website: [emarketflows.io](https://emarketflows.com)
 - Developers Space: [Resources](https://emarketflows.com/developers)
 
-## Index
+## Table of Contents
 - [eMarketFlows JavaScript SDK](#emarketflows-javascript-sdk)
-  - [Index](#index)
+  - [Table of Contents](#table-of-contents)
+  - [Why use this SDK?](#why-use-this-sdk)
   - [Install](#install)
   - [Consume resources](#consume-resources)
     - [Resources reference](#resources-reference)
   - [Check client scopes](#check-client-scopes)
 
-## Install
+## Why use this SDK?
 
-This package permits use eMarketFlows API services in easy steps.
+This package permits use official eMarketFlows API services in easy steps.
+
+## Install
 
 1. Run this command in your project folder:
    ```js
@@ -58,17 +61,25 @@ const notifications = await emfClient.notifications.push.list({limit: 5});
 
 | Service | Resource | LIST | GET | POST | PUT | DELETE |
 | -------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| notifications  | push | ✅ | ✅ | ✅ | ✅ | ❌ |
+| notifications  | push | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | email | ✅ | ✅ | ✅ | ✅ | ✅ |
 | oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
 |  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
 |  | clients | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | members | ✅ | ✅ | ✅ | ✅ | ✅ |
 | billing  | products | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | orders | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | payments | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | invoices | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | serials | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | paymentMethods | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | catalogues | ✅ | ✅ | ✅ | ✅ | ✅ |
 | contacts  | customers | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | providers | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | addresses | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ubications  | shops | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | warehouses | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | corners | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ## Check client scopes
 
@@ -82,7 +93,7 @@ const isValid = await validate(
                         'list:providers'
                       );
 
-console.log("Client has super:contacts and list:providers scopes?" + isValid);
+console.log("Client has super:contacts and list:providers scopes? " + isValid);
 
 // Client has super:contacts and list:providers scopes? true
 // Client has super:contacts and list:providers scopes? false
