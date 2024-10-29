@@ -27,12 +27,10 @@ emfClient.authenticate();
 One of principal uses of eMarketFlows SDK is be a developer interface to code fastly integrations.
 
 ```js
-/*  */
+/* Import eMarketFlows SDK client */
 const { v1: emfClient } = require('@emarketflows/javascript-sdk');
 
 /** 
- * Example
- * 
  * Acces to push notifications api and get list of last five notifications.
  * */
 const notifications = await emfClient.notifications.push.list({limit: 5});
