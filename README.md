@@ -30,7 +30,9 @@ One of principal uses of eMarketFlows SDK is be a developer interface to code fa
 
 | Service | Resource | LIST | GET | POST | PUT | DELETE |
 | -------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| notifications  | push | ✅ | ✅ | ✅ | ✅ | ✅ |
+| notifications  | push | ✅ | ✅ | ✅ | ✅ | ❌ |
+| oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
+|  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
 
 ```js
 /*  */
