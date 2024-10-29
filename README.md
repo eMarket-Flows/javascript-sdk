@@ -1,8 +1,14 @@
-# eMarketFlows NodeJS API client
+# eMarketFlows JavaScript SDK
 
-## Inicialice
+This package permits use eMarketFlows API services in easy steps.
 
-Import module:
+1. Run this command in your project folder:
+   ```js
+   npm i @emarketflows/javascript-sdk
+   ```
+2. To use this SDK you need an account, you can (create one here)[#].
+3. Access your account (here)[https://emarketflows.io/login] and create new (client credentials)[#].
+4. Inicialice client session:
 ```js
 /* Import eMarketFlows SDK client */
 const client = require('@emarketflows/javascript-sdk');
@@ -21,8 +27,7 @@ const emfClient = new client({
 /* Authenticate the client */
 emfClient.authenticate();
 ```
-
-## Make calls
+5. Make calls
 
 One of principal uses of eMarketFlows SDK is be a developer interface to code fastly integrations.
 
