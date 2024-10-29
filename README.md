@@ -40,7 +40,13 @@ const emfClient = new client({
   AUTH0_CLIENT_SCOPES: YOUR_CLIENT_SCOPES
 });
 
-/* Authenticate the client */
+/**
+ * Authenticate the client
+ * 
+ * After [install] module with your credential, this package create
+ * cache space where sets your temporal client token and refresh it 
+ * when is necessary.
+ * */
 emfClient.authenticate();
 ```
 ## Consume resources
@@ -59,27 +65,27 @@ const notifications = await emfClient.notifications.push.list({limit: 5});
 
 ### Resources reference
 
-| Service | Resource | LIST | GET | POST | PUT | DELETE |
-| -------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| notifications  | push | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | email | ✅ | ✅ | ✅ | ✅ | ✅ |
-| oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
-|  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
-|  | clients | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | members | ✅ | ✅ | ✅ | ✅ | ✅ |
-| billing  | products | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | orders | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | payments | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | invoices | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | serials | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | paymentMethods | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | catalogues | ✅ | ✅ | ✅ | ✅ | ✅ |
-| contacts  | customers | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | providers | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | addresses | ✅ | ✅ | ✅ | ✅ | ✅ |
-| ubications  | shops | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | warehouses | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | corners | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Service | Resource | DESCRIPTION | LIST | GET | POST | PUT | DELETE |
+| -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| notifications  | push | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | email | E-mail notifications  | ✅ | ✅ | ✅ | ✅ | ✅ |
+| oauth2  | organizations | Organizations  | ✅ | ✅ | ✅ | ✅ | ❌ |
+|  | scopes | Push notifications | ✅ | ✅ | ❌ | ❌ | ❌ |
+|  | clients | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | members | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+| billing  | products | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | orders | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | payments | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | invoices | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | serials | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | paymentMethods | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | catalogues | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+| contacts  | customers | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | providers | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | addresses | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ubications  | shops | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | warehouses | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | corners | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ## Check client scopes
 
