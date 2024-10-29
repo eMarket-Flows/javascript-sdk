@@ -3,6 +3,13 @@
 - Official website: [emarketflows.io](https://emarketflows.com)
 - Developers Space: [Resources](https://emarketflows.com/developers)
 
+## Index
+- [1. Install](#)
+- [2. Access REST resources](#)
+- [3. Check client scopes](#)
+
+## Install
+
 This package permits use eMarketFlows API services in easy steps.
 
 1. Run this command in your project folder:
@@ -30,7 +37,7 @@ const emfClient = new client({
 /* Authenticate the client */
 emfClient.authenticate();
 ```
-5. Access REST resources
+## Access REST resources
 
 One of principal uses of eMarketFlows SDK is be a developer interface to code fastly integrations.
 
