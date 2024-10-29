@@ -30,7 +30,7 @@ const emfClient = new client({
 /* Authenticate the client */
 emfClient.authenticate();
 ```
-5. Make calls
+5. Access REST resources
 
 One of principal uses of eMarketFlows SDK is be a developer interface to code fastly integrations.
 
