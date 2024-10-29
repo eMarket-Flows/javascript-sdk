@@ -45,6 +45,7 @@ const notifications = await emfClient.notifications.push.list({limit: 5});
 | notifications  | push | ✅ | ✅ | ✅ | ✅ | ❌ |
 | oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
 |  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
+|  | clients | ✅ | ✅ | ✅ | ✅ | ✅ |
 | billing  | products | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | orders | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | invoices | ✅ | ✅ | ✅ | ✅ | ✅ |
