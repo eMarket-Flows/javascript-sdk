@@ -26,21 +26,6 @@ emfClient.authenticate();
 
 One of principal uses of eMarketFlows SDK is be a developer interface to code fastly integrations.
 
-### Resources
-
-| Service | Resource | LIST | GET | POST | PUT | DELETE |
-| -------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| notifications  | push | ✅ | ✅ | ✅ | ✅ | ❌ |
-| oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
-|  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
-| billing  | products | ✅ | ✅ | ✅ | ✅ | ❌ |
-|  | orders | ✅ | ✅ | ❌ | ❌ | ❌ |
-|  | invoices | ✅ | ✅ | ❌ | ❌ | ❌ |
-|  | catalogues | ✅ | ✅ | ❌ | ❌ | ❌ |
-| contacts  | customers | ✅ | ✅ | ✅ | ✅ | ❌ |
-|  | providers | ✅ | ✅ | ❌ | ❌ | ❌ |
-|  | addresses | ✅ | ✅ | ❌ | ❌ | ❌ |
-
 ```js
 /*  */
 const { v1: emfClient } = require('@emarketflows/javascript-sdk');
@@ -52,6 +37,21 @@ const { v1: emfClient } = require('@emarketflows/javascript-sdk');
  * */
 const notifications = await emfClient.notifications.push.list({limit: 5});
 ```
+
+### Resources
+
+| Service | Resource | LIST | GET | POST | PUT | DELETE |
+| -------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| notifications  | push | ✅ | ✅ | ✅ | ✅ | ❌ |
+| oauth2  | organizations | ✅ | ✅ | ✅ | ✅ | ❌ |
+|  | scopes | ✅ | ✅ | ❌ | ❌ | ❌ |
+| billing  | products | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | orders | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | invoices | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | catalogues | ✅ | ✅ | ✅ | ✅ | ✅ |
+| contacts  | customers | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | providers | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | addresses | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ## Check route permission
 Check route permissions:
