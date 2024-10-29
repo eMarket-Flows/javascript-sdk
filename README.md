@@ -35,6 +35,31 @@ One of principal uses of eMarketFlows SDK is be a developer interface to code fa
 |  |  | POST | ✅ |
 |  |  | PUT | ✅ |
 |  |  | DELETE | ❌ |
+| oauth2  | organizations | LIST | ✅ |
+|  |  | GET | ✅ |
+|  |  | POST | ✅ |
+|  |  | PUT | ✅ |
+|  |  | DELETE | ❌ |
+| billing  | orders | LIST | ✅ |
+|  |  | GET | ✅ |
+|  |  | POST | ✅ |
+|  |  | PUT | ✅ |
+|  |  | DELETE | ❌ |
+|  | customers | LIST | ✅ |
+|  |  | GET | ✅ |
+|  |  | POST | ✅ |
+|  |  | PUT | ✅ |
+|  |  | DELETE | ❌ |
+|  | providers | LIST | ✅ |
+|  |  | GET | ✅ |
+|  |  | POST | ✅ |
+|  |  | PUT | ✅ |
+|  |  | DELETE | ❌ |
+|  | invoices | LIST | ✅ |
+|  |  | GET | ✅ |
+|  |  | POST | ✅ |
+|  |  | PUT | ✅ |
+|  |  | DELETE | ❌ |
 
 ```js
 /*  */
