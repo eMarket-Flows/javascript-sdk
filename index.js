@@ -1,10 +1,17 @@
-const axios = require("axios").default;
-
-const myCache = require('./cache/cache');
-
-const api = require("./api/index");
+/**
+ * eMarketFlowsRestApi class for handling authentication and token management with Auth0.
+ */
 
 class eMarketFlowsRestApi {
+    /**
+     * Creates an instance of eMarketFlowsRestApi.
+     * @param {Object} options - The configuration options.
+     * @param {string} options.AUTH0_DOMAIN - The Auth0 domain.
+     * @param {string} options.AUTH0_CLIENT_ID - The Auth0 client ID.
+     * @param {string} options.AUTH0_CLIENT_SECRET - The Auth0 client secret.
+     * @param {string} options.AUTH0_CLIENT_SCOPES - The Auth0 client scopes.
+     * @throws Will throw an error if any of the required options are not provided.
+     */
     constructor(options) {
         if (!options) {
             throw new Error('Options must be provided');
@@ -32,6 +39,13 @@ class eMarketFlowsRestApi {
         this.AUTH0_CLIENT_SCOPES = options.AUTH0_CLIENT_SCOPES;
     }
 
+    /**
+     * Saves the token to the cache and sets a timer to refresh the token before it expires.
+     * @param {Object} token - The token object.
+     * @param {string} token.access_token - The access token.
+     * @param {string} token.token_type - The type of the token.
+     * @param {number} token.expires_in - The expiration time of the token in seconds.
+     */
     saveToken(token) {
         const self = this;
         const success = myCache.set("auth2_token", token);
@@ -52,16 +66,15 @@ class eMarketFlowsRestApi {
         
         const expiresIn = (expiresInMs.getTime() - now.getTime());
         
-        console.log('token', token);
-        
         console.log(`[oAuth2] eMarket Flows token saved, expires in ${expiresIn} milliseconds.`);
 
-
-        
         // Start a timer to refresh the token before it expires
         setTimeout(self.refreshToken, expiresIn);
     }
 
+    /**
+     * Authenticates with Auth0 and saves the token to the cache.
+     */
     authenticate() {
         const self = this;
         var options = {
@@ -84,6 +97,9 @@ class eMarketFlowsRestApi {
         });
     }
 
+    /**
+     * Refreshes the Auth0 token and saves the new token to the cache.
+     */
     refreshToken() {
         const self = this;
         var options = {
@@ -107,6 +123,11 @@ class eMarketFlowsRestApi {
     }
 }
 
+/**
+ * Middleware to authenticate requests using the provided scopes.
+ * @param {...string} scopes - The required scopes for the request.
+ * @returns {Function} The middleware function.
+ */
 authenticateRequest = (...scopes) => async (req, res, next) => {
     try {
         if (!req.headers.authorization) {
