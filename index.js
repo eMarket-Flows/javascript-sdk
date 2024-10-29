@@ -123,7 +123,7 @@ class client {
  * @param {...string} scopes - The required scopes for the request.
  * @returns {Function} The middleware function.
  */
-authenticateRequest = (...scopes) => async (req, res, next) => {
+validate = (...scopes) => async (req, res, next) => {
     try {
         if (!req.headers.authorization) {
             throw ({
@@ -177,4 +177,4 @@ const v1 = require('./v1');
 
 module.exports = client;
 module.exports.v1 = v1;
-module.exports.authenticateRequest = authenticateRequest;
+module.exports.validate = validate;
