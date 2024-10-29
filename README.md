@@ -1,7 +1,7 @@
 # eMarketFlows JavaScript SDK
 
-Official website: [emarketflows.io](https://emarketflows.com)
-Developers Space: [Resources](https://emarketflows.com/developers)
+- Official website: [emarketflows.io](https://emarketflows.com)
+- Developers Space: [Resources](https://emarketflows.com/developers)
 
 This package permits use eMarketFlows API services in easy steps.
 
@@ -60,12 +60,20 @@ const notifications = await emfClient.notifications.push.list({limit: 5});
 |  | providers | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | addresses | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-## Check route permission
-Check route permissions:
+## Check client scopes
+
+Check client permissions importing validate function:
 ```js
-const { authenticateRequest } = require('@emarketflows/javascript-sdk');
-authenticateRequest(
-        'super:contacts',
-        'list:providers'
-)
+/* Import validation service */
+const { validate } = require('@emarketflows/javascript-sdk');
+
+const isValid = await validate(
+                        'super:contacts',
+                        'list:providers'
+                      );
+
+console.log("Client has super:contacts and list:providers scopes?" + isValid);
+
+// Client has super:contacts and list:providers scopes? true
+// Client has super:contacts and list:providers scopes? false
 ```
