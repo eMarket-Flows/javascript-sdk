@@ -4,10 +4,12 @@
 - Developers Space: [Resources](https://emarketflows.com/developers)
 
 ## Index
-- [Install](#)
-- [Consume resources](#)
-- [Resources reference](#)
-- [Check client scopes](#)
+- [eMarketFlows JavaScript SDK](#emarketflows-javascript-sdk)
+  - [Index](#index)
+  - [Install](#install)
+  - [Consume resources](#consume-resources)
+    - [Resources reference](#resources-reference)
+  - [Check client scopes](#check-client-scopes)
 
 ## Install
 
@@ -38,7 +40,7 @@ const emfClient = new client({
 /* Authenticate the client */
 emfClient.authenticate();
 ```
-## Access REST resources
+## Consume resources
 
 One of principal uses of eMarketFlows SDK is be a developer interface to code fastly integrations.
 
