@@ -4,9 +4,10 @@
 - Developers Space: [Resources](https://emarketflows.com/developers)
 
 ## Index
-- [1. Install](#)
-- [2. Access REST resources](#)
-- [3. Check client scopes](#)
+- [Install](#)
+- [Consume resources](#)
+- [Resources reference](#)
+- [Check client scopes](#)
 
 ## Install
 
@@ -51,7 +52,7 @@ const { v1: emfClient } = require('@emarketflows/javascript-sdk');
 const notifications = await emfClient.notifications.push.list({limit: 5});
 ```
 
-### Resources
+### Resources reference
 
 | Service | Resource | LIST | GET | POST | PUT | DELETE |
 | -------- | ------- | ------- | ------- | ------- | ------- | ------- |
