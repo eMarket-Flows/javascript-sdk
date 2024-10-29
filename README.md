@@ -3,7 +3,7 @@
 ## Inicialice
 
 Import module:
-```
+```js
 // Import eMarketFlows SDK client
 const client = require('@emarketflows/javascript-sdk');
 
@@ -23,7 +23,7 @@ emfClient.authenticate();
 ```
 
 ## Make API Call
-```
+```js
 const { api } = require('@emarketflows/javascript-sdk');
 
 const notifications = await api.notifications.push.list({limit: 5});
@@ -31,7 +31,7 @@ const notifications = await api.notifications.push.list({limit: 5});
 
 ## Check route permission
 Check route permissions:
-```
+```js
 const { authenticateRequest } = require('@emarketflows/javascript-sdk');
 authenticateRequest(
         'super:contacts',
