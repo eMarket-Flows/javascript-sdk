@@ -1,13 +1,16 @@
 # eMarketFlows JavaScript SDK
 
+Official website: [emarketflows.io](https://emarketflows.com)
+Developers Space: [Resources](https://emarketflows.com/developers)
+
 This package permits use eMarketFlows API services in easy steps.
 
 1. Run this command in your project folder:
    ```js
    npm i @emarketflows/javascript-sdk
    ```
-2. To use this SDK you need an account, you can (create one here)[#].
-3. Access your account (here)[https://emarketflows.io/login] and create new (client credentials)[#].
+2. To use this SDK you need an account, you can [create one here](#).
+3. Access your account [here](https://emarketflows.io/login) and create new [client credentials](#).
 4. Inicialice client session:
 ```js
 /* Import eMarketFlows SDK client */
