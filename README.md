@@ -30,12 +30,11 @@ One of principal uses of eMarketFlows SDK is be a developer interface to code fa
 
 | Service | Resource | Method | Available |
 | -------- | ------- | ------- | ------- |
-| notifications  | push | GET | Yes |
-|  |  | LIST | Yes |
-|  |  | GET | Yes |
-|  |  | POST | Yes |
-|  |  | PUT | Yes |
-|  |  | DELETE | Yes |
+| notifications  | push | LIST | ✅ |
+|  |  | GET | ✅ |
+|  |  | POST | ✅ |
+|  |  | PUT | ✅ |
+|  |  | DELETE | ❌ |
 
 ```js
 /*  */
