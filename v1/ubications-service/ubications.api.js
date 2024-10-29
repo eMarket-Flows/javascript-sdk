@@ -2,8 +2,9 @@ const axios = require('axios');
 const myCache = require("../../cache/cache.js");
 const config = require('../../config.js');
 
-const BASE_URL = 'ubications';
 const API_VERSION = 'v1';
+const API_SERVICE = 'ubications';
+const API_RESOURCE = 'ubications';
 
 // Implement a function to get the token from the cache myCache
 function getTokenFromCache() {
@@ -21,7 +22,7 @@ async function get(id) {
                 
         const response = await axios.request({
             method: 'GET',
-            url: `${config.MS_API_URL}/${API_VERSION}${BASE_URL}/ubications/${id}`,
+            url: `${config.MS_API_URL}/${API_VERSION}${API_SERVICE}/${API_RESOURCE}/${id}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -54,7 +55,7 @@ async function list(filters) {
                 
         const response = await axios.request({
             method: 'GET',
-            url: `${config.MS_API_URL}/${API_VERSION}/${BASE_URL}/ubications?${queryString}`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}?${queryString}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -83,7 +84,7 @@ async function add(ubication) {
 
         const response = await axios.request({
             method: 'POST',
-            url: `${config.MS_API_URL}/${BASE_URL}/ubications`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -114,7 +115,7 @@ async function update(ubication) {
 
         const response = await axios.request({
             method: 'PUT',
-            url: `${config.MS_API_URL}/${BASE_URL}/ubications/${ubication.id}`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}//${ubication.id}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -145,7 +146,7 @@ async function remove(id) {
 
         const response = await axios.request({
             method: 'DELETE',
-            url: `${config.MS_API_URL}/${BASE_URL}/ubications/${id}`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}/${id}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
