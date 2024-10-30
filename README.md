@@ -3,6 +3,7 @@
 - Official website: [emarketflows.io](https://emarketflows.io)
 - Developers Space: [resources](https://emarketflows.io/developers)
 - GitHub: [eMarket Flows - JavaScript SDK](https://github.com/eMarket-Flows/javascript-sdk)
+- Node Package: [@emarketflows/javascript-sdk](https://www.npmjs.com/package/@emarketflows/javascript-sdk)
 - License: [MIT](https://github.com/eMarket-Flows/javascript-sdk/blob/master/LICENSE.md)
 
 ## Table of Contents
