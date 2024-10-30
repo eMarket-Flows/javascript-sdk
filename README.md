@@ -54,9 +54,9 @@ const emfClient = new client({
 /**
  * Authenticate the client
  * 
- * After [install] module with your credential, this package create
- * cache space where sets your temporal client token and refresh it 
- * when is necessary.
+ * After install module and autheticate client with your credential, 
+ * this package create cache space where sets your temporal client token
+ * and refresh it when is necessary.
  * */
 emfClient.authenticate();
 ```
