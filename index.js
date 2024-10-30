@@ -17,18 +17,22 @@ class client {
      */
     constructor(options) {
         if (!options) {
+            console.log('[EMF_SDK] Options must be provided');
             throw new Error('Options must be provided');
         }
 
         if (!options.AUTH2_CLIENT_ID) {
+            console.log('[EMF_SDK] AUTH2_CLIENT_ID must be provided');
             throw new Error('AUTH2_CLIENT_ID must be provided');
         }
 
         if (!options.AUTH2_CLIENT_SECRET) {
+            console.log('[EMF_SDK] AUTH2_CLIENT_SECRET must be provided');
             throw new Error('AUTH2_CLIENT_SECRET must be provided');
         }
 
         if (!options.AUTH2_CLIENT_SCOPES) {
+            console.log('[EMF_SDK] AUTH2_CLIENT_SCOPES must be provided');
             throw new Error('AUTH2_CLIENT_SCOPES must be provided');
         }
 
@@ -46,11 +50,13 @@ class client {
      * @param {number} token.expires_in - The expiration time of the token in seconds.
      */
     saveToken(token) {
+        console.log("[EMF_SDK] Saving token to cache...");
+
         const self = this;
         const success = myCache.set("auth2_token", token);
         
         if (!success) {
-            console.error("[oAuth2] eMarket Flows failed to save token to cache.");
+            console.error("[EMF_SDK] Fail saving token in cache.");
         
             // Retry saving the token in 2 minutes
             setTimeout(refreshToken, 120000);
@@ -65,7 +71,7 @@ class client {
         
         const expiresIn = (expiresInMs.getTime() - now.getTime());
         
-        console.log(`[oAuth2] eMarket Flows token saved, expires in ${expiresIn} milliseconds.`);
+        console.log(`[EMF_SDK] Token saved, expires in ${expiresIn}ms.`);
 
         // Start a timer to refresh the token before it expires
         setTimeout(self.refreshToken, expiresIn);
@@ -75,6 +81,10 @@ class client {
      * Authenticates with Auth2 and saves the token to the cache.
      */
     authenticate() {
+        console.log("[EMF_SDK] Authenticating...");
+        console.log(`[EMF_SDK] Client ID: ${this.AUTH2_CLIENT_ID}`);
+        console.log(`[EMF_SDK] Client Scopes: ${this.AUTH2_CLIENT_SCOPES}`);
+
         const self = this;
         var options = {
             method: 'POST',
@@ -100,6 +110,8 @@ class client {
      * Refreshes the AUTH2 token and saves the new token to the cache.
      */
     refreshToken() {
+        console.log("[EMF_SDK] Refreshing token...");
+        
         const self = this;
         var options = {
             method: 'POST',
@@ -129,6 +141,9 @@ class client {
  */
 validate = (...scopes) => async (req, res, next) => {
     try {
+        console.log("[EMF_SDK] Validating token scopes...");
+        console.log("[EMF_SDK] Required scopes: " + scopes.join(" "));
+
         if (!req.headers.authorization) {
             throw ({
                 message: "Requires authentication token",
@@ -156,12 +171,15 @@ validate = (...scopes) => async (req, res, next) => {
         });
 
         if(!response) {
+            console.log("[EMF_SDK] Token is not valid.");
             throw ({
                 message: "Unauthorized",
                 status: 401,
                 code: "unauthorized"
             });
         }
+
+        console.log("[EMF_SDK] Token is valid.");
 
         req.scope = response.data.scope.split(" ");
         req.role = response.data.role;
