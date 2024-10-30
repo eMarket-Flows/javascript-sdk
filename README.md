@@ -108,4 +108,4 @@ console.log(`Client has super:contacts and list:providers scopes? ${isValid}`);
 */
 ```
 
-* Copyright 2024 @ eMarket Flows. All rights reserved. *
+*Copyright 2024 @ eMarket Flows. All rights reserved.*
