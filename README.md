@@ -57,9 +57,7 @@ One of principal uses of eMarketFlows SDK is be a developer interface to code fa
 /* Import eMarketFlows SDK client */
 const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
 
-/** 
- * Acces to push notifications api and get list of last five notifications.
- * */
+/* Access to push notifications service and list last five notifications. */
 const notifications = await emfClient.notifications.push.list({limit: 5});
 ```
 
