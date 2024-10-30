@@ -87,8 +87,8 @@ After [install](#install) and [authenticate](#authentication) your eMarket Flows
 /* Import eMarketFlows SDK client */
 const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
 
-/* Get customer by customer ID */
-const customers = await EmfClient.contacts.customers.get(CUSTOMER_ID);
+/* Get customer by customer unique identifier */
+const customer = await EmfClient.contacts.customers.get(CUSTOMER_ID);
 ```
 
 #### LIST
@@ -108,7 +108,7 @@ const customers = await EmfClient.contacts.customers.list({limit: 5});
 const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
 
 /* Add customer */
-const customers = await EmfClient.contacts.customers.add({
+const customer = await EmfClient.contacts.customers.add({
   firstName: "John",
   lastName: "Doe",
   email: "johndoe@email.com"
@@ -122,7 +122,7 @@ const customers = await EmfClient.contacts.customers.add({
 const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
 
 /* Update customer */
-const customers = await EmfClient.contacts.customers.update({
+const customer = await EmfClient.contacts.customers.update({
   id: "CUSTOMER_ID",
   firstName: "Joana",
   lastName: "Doe",
@@ -137,7 +137,7 @@ const customers = await EmfClient.contacts.customers.update({
 const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
 
 /* Remove customer */
-const customers = await EmfClient.contacts.customers.remove(CUSTOMER_ID);
+const customer = await EmfClient.contacts.customers.remove(CUSTOMER_ID);
 ```
 
 ### Resources reference
