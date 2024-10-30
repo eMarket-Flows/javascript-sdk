@@ -10,7 +10,7 @@
   - [Why use this SDK?](#why-use-this-sdk)
   - [Install](#install)
   - [Consume resources](#consume-resources)
-    - [Methods reference](#methods-reference)
+    - [\[CRUD\] Methods reference](#crud-methods-reference)
       - [GET](#get)
       - [LIST](#list)
       - [ADD](#add)
@@ -71,7 +71,7 @@ const notifications = await EmfClient.notifications.push.list({limit: 5});
 const customers = await EmfClient.contacts.customers.list({limit: 10});
 ```
 
-### Methods reference
+### [CRUD] Methods reference
 
 #### GET
 
