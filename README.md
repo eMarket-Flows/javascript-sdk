@@ -1,11 +1,12 @@
-# eMarketFlows JavaScript SDK
+# eMarket Flows - JavaScript SDK
 
 - Official website: [emarketflows.io](https://emarketflows.io)
 - Developers Space: [resources](https://emarketflows.io/developers)
+- GitHub: [eMarket Flows - JavaScript SDK](https://github.com/eMarket-Flows/javascript-sdk)
 - License: [MIT](https://github.com/eMarket-Flows/javascript-sdk/blob/master/LICENSE.md)
 
 ## Table of Contents
-- [eMarketFlows JavaScript SDK](#emarketflows-javascript-sdk)
+- [eMarket Flows - JavaScript SDK](#emarket-flows---javascript-sdk)
   - [Table of Contents](#table-of-contents)
   - [Why use this SDK?](#why-use-this-sdk)
   - [Install](#install)
