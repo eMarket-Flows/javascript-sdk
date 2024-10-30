@@ -10,6 +10,12 @@
   - [Why use this SDK?](#why-use-this-sdk)
   - [Install](#install)
   - [Consume resources](#consume-resources)
+    - [Methods reference](#methods-reference)
+      - [GET](#get)
+      - [LIST](#list)
+      - [ADD](#add)
+      - [UPDATE](#update)
+      - [REMOVE](#remove)
     - [Resources reference](#resources-reference)
   - [\[Authorization\] Check client scopes](#authorization-check-client-scopes)
 
@@ -58,8 +64,72 @@ One of principal uses of eMarketFlows SDK is be a developer interface to code fa
 /* Import eMarketFlows SDK client */
 const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
 
-/* Access to push notifications service and list last five notifications. */
-const notifications = await emfClient.notifications.push.list({limit: 5});
+/* Example 1. Access to push notifications service and list last five notifications. */
+const notifications = await EmfClient.notifications.push.list({limit: 5});
+
+/* Example 2. Access to customers service and list last ten customers. */
+const customers = await EmfClient.contacts.customers.list({limit: 10});
+```
+
+### Methods reference
+
+#### GET
+
+```js
+/* Import eMarketFlows SDK client */
+const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
+
+/* Get customer by customer ID */
+const customers = await EmfClient.contacts.customers.get(CUSTOMER_ID);
+```
+
+#### LIST
+
+```js
+/* Import eMarketFlows SDK client */
+const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
+
+/* List customers with limit */
+const customers = await EmfClient.contacts.customers.list({limit: 5});
+```
+
+#### ADD
+
+```js
+/* Import eMarketFlows SDK client */
+const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
+
+/* Add customer */
+const customers = await EmfClient.contacts.customers.add({
+  firstName: "John",
+  lastName: "Doe",
+  email: "johndoe@email.com"
+});
+```
+
+#### UPDATE
+
+```js
+/* Import eMarketFlows SDK client */
+const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
+
+/* Update customer */
+const customers = await EmfClient.contacts.customers.update({
+  id: "CUSTOMER_ID",
+  firstName: "Joana",
+  lastName: "Doe",
+  email: "joanadoe@email.com"
+});
+```
+
+#### REMOVE
+
+```js
+/* Import eMarketFlows SDK client */
+const { v1: EmfClient } = require('@emarketflows/javascript-sdk');
+
+/* Remove customer */
+const customers = await EmfClient.contacts.customers.remove(CUSTOMER_ID);
 ```
 
 ### Resources reference
