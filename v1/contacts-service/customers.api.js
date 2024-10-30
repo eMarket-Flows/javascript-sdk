@@ -2,8 +2,9 @@ const axios = require('axios');
 const myCache = require("../../cache/cache.js");
 const config = require('../../config.js');
 
-const BASE_URL = 'contacts';
 const API_VERSION = 'v1';
+const API_SERVICE = 'contacts';
+const API_RESOURCE = 'customers';
 
 // Implement a function to get the token from the cache myCache
 function getTokenFromCache() {
@@ -14,14 +15,18 @@ function getTokenFromCache() {
 async function get(id) {
     try {
         if(!id) {
-            throw new Error('Customer ID is required');
+            throw ({
+                message: "Customer ID is required",
+                status: 400,
+                code: "bad_request"
+            });
         }
 
         const token = await getTokenFromCache();
                 
         const response = await axios.request({
             method: 'GET',
-            url: `${config.MS_API_URL}/${API_VERSION}${BASE_URL}/customers/${id}`,
+            url: `${config.MS_API_URL}/${API_VERSION}${API_SERVICE}/${API_RESOURCE}/${id}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -30,14 +35,22 @@ async function get(id) {
         });
 
         if(!response.data) {
-            throw new Error('Customer not found');
+            throw ({
+                message: "Customer not found",
+                status: 404,
+                code: "not_found"
+            });
         }
 
-        customer = response.data;
+        const customer = response.data;
 
         return customer;
     } catch (error) {
-        throw error;
+        throw ({
+            message: error.message || "Error getting customer",
+            status: error.status || 500,
+            code: error.code || "internal_server_error"
+        });
     }
 }
 
@@ -54,7 +67,7 @@ async function list(filters) {
                 
         const response = await axios.request({
             method: 'GET',
-            url: `${config.MS_API_URL}/${API_VERSION}/${BASE_URL}/customers?${queryString}`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}?${queryString}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -63,12 +76,20 @@ async function list(filters) {
         });
 
         if(!response.data) {
-            throw new Error('Customers not found');
+            throw ({
+                message: "Customers not found",
+                status: 404,
+                code: "not_found"
+            });
         }
 
         return response.data;
     } catch (error) {
-        throw error;
+        throw ({
+            message: error.message || "Error listing customer",
+            status: error.status || 500,
+            code: error.code || "internal_server_error"
+        });
     }
 }
 
@@ -76,14 +97,18 @@ async function list(filters) {
 async function add(customer) {
     try {
         if(!customer) {
-            throw new Error('Customer data is required');
+            throw ({
+                message: "Customer data is required",
+                status: 400,
+                code: "bad_request"
+            });
         }
 
         const token = await getTokenFromCache();
 
         const response = await axios.request({
             method: 'POST',
-            url: `${config.MS_API_URL}/${BASE_URL}/customers`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -93,13 +118,21 @@ async function add(customer) {
         });
 
         if(!response.data) {
-            throw new Error('Error creating customer');
+            throw ({
+                message: "Error creating customer",
+                status: 500,
+                code: "internal_server_error"
+            });
         }
 
         return response.data;
     }
     catch (error) {
-        throw error;
+        throw ({
+            message: error.message || "Error creating customer",
+            status: error.status || 500,
+            code: error.code || "internal_server_error"
+        });
     }
 }
 
@@ -107,14 +140,18 @@ async function add(customer) {
 async function update(customer) {
     try {
         if(!customer) {
-            throw new Error('Customer data is required');
+            throw ({
+                message: "Customer data is required",
+                status: 400,
+                code: "bad_request"
+            });
         }
 
         const token = await getTokenFromCache();
 
         const response = await axios.request({
             method: 'PUT',
-            url: `${config.MS_API_URL}/${BASE_URL}/customers/${customer.id}`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}/${customer.id}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -124,13 +161,21 @@ async function update(customer) {
         });
 
         if(!response.data) {
-            throw new Error('Error updating customer');
+            throw ({
+                message: "Error updating customer",
+                status: 500,
+                code: "internal_server_error"
+            });
         }
 
         return response.data;
     }
     catch (error) {
-        throw error;
+        throw ({
+            message: error.message || "Error updating customer",
+            status: error.status || 500,
+            code: error.code || "internal_server_error"
+        });
     }
 }
 
@@ -138,14 +183,18 @@ async function update(customer) {
 async function remove(id) {
     try {
         if(!id) {
-            throw new Error('Customer ID is required');
+            throw ({
+                message: "Customer ID is required",
+                status: 400,
+                code: "bad_request"
+            });
         }
 
         const token = await getTokenFromCache();
 
         const response = await axios.request({
             method: 'DELETE',
-            url: `${config.MS_API_URL}/${BASE_URL}/customers/${id}`,
+            url: `${config.MS_API_URL}/${API_VERSION}/${API_SERVICE}/${API_RESOURCE}/${id}`,
             headers: { 
                 'content-type': 'application/json',
                 'authorization': `Bearer ${token.access_token}`,
@@ -154,13 +203,21 @@ async function remove(id) {
         });
 
         if(!response.data) {
-            throw new Error('Error deleting customer');
+            throw ({
+                message: "Customer not found",
+                status: 404,
+                code: "not_found"
+            });
         }
 
         return response.data;
     }
     catch (error) {
-        throw error;
+        throw ({
+            message: error.message || "Error deleting customer",
+            status: error.status || 500,
+            code: error.code || "internal_server_error"
+        });
     }
 }
 
