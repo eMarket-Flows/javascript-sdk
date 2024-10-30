@@ -9,6 +9,7 @@
   - [Table of Contents](#table-of-contents)
   - [Why use this SDK?](#why-use-this-sdk)
   - [Install](#install)
+  - [Authentication](#authentication)
   - [Consume resources](#consume-resources)
     - [\[CRUD\] Methods reference](#crud-methods-reference)
       - [GET](#get)
@@ -31,7 +32,10 @@ This package permits use official eMarketFlows API services in easy steps.
    ```
 2. To use this SDK you need an account, you can [create one here](#).
 3. Access your account [here](https://emarketflows.io/login) and create new [client credentials](#).
-4. Inicialice client session:
+
+## Authentication
+
+Authenticate client session with your client identifier and Secret:
 ```js
 /* Import eMarketFlows SDK client */
 const client = require('@emarketflows/javascript-sdk');
@@ -72,6 +76,8 @@ const customers = await EmfClient.contacts.customers.list({limit: 10});
 ```
 
 ### [CRUD] Methods reference
+
+After [install](#install) and [authenticate](#authentication) your eMarket Flows client:
 
 #### GET
 
