@@ -1,7 +1,8 @@
 # eMarketFlows JavaScript SDK
 
-- Official website: [emarketflows.io](https://emarketflows.com)
-- Developers Space: [Resources](https://emarketflows.com/developers)
+- Official website: [emarketflows.io](https://emarketflows.io)
+- Developers Space: [resources](https://emarketflows.io/developers)
+- License: [MIT](https://github.com/eMarket-Flows/javascript-sdk/blob/master/LICENSE.md)
 
 ## Table of Contents
 - [eMarketFlows JavaScript SDK](#emarketflows-javascript-sdk)
@@ -106,3 +107,5 @@ console.log(`Client has super:contacts and list:providers scopes? ${isValid}`);
  * Client has super:contacts and list:providers scopes? false
 */
 ```
+
+* Copyright 2024 @ eMarket Flows. All rights reserved. *
