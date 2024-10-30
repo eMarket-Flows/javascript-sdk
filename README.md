@@ -10,7 +10,7 @@
   - [Install](#install)
   - [Consume resources](#consume-resources)
     - [Resources reference](#resources-reference)
-  - [Check client scopes](#check-client-scopes)
+  - [\[Authorization\] Check client scopes](#authorization-check-client-scopes)
 
 ## Why use this SDK?
 
@@ -70,39 +70,41 @@ const notifications = await emfClient.notifications.push.list({limit: 5});
 | notifications  | push | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | email | E-mail notifications  | ✅ | ✅ | ✅ | ✅ | ✅ |
 | oauth2  | organizations | Organizations  | ✅ | ✅ | ✅ | ✅ | ❌ |
-|  | scopes | Push notifications | ✅ | ✅ | ❌ | ❌ | ❌ |
-|  | clients | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | members | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-| billing  | products | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | orders | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | payments | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | invoices | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | serials | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | paymentMethods | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | catalogues | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-| contacts  | customers | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | providers | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | groups | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | addresses | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | activities | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-| ubications  | shops | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | warehouses | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
-|  | corners | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | clients | Account Auth2.0 clients | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | members | Organization members | ✅ | ✅ | ✅ | ✅ | ✅ |
+| billing  | products | Orgnization products | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | catalogues | Product catalogues | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | orders | Organization orders | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | payments | Order payments | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | invoices | Invoices | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | serials | Invoice serials | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | paymentMethods | Invoice payment methods | ✅ | ✅ | ✅ | ✅ | ✅ |
+| contacts  | customers | Organization customers | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | groups | Customer groups | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | providers | Organization providers | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | addresses | Contact addresses | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | activities | Contact activities | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ubications  | stores | Organization stores | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | warehouses | Organization warehouses | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | corners | Organization corners | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-## Check client scopes
+## [Authorization] Check client scopes
 
 Check client permissions importing validate function:
 ```js
 /* Import validation service */
 const { validate } = require('@emarketflows/javascript-sdk');
 
-const isValid = await validate(
-                        'super:contacts',
-                        'list:providers'
-                      );
+/* Check client scopes with Auth2.0 authorization service */
+const isValid = await validate('super:contacts', 'list:providers');
 
-console.log("Client has super:contacts and list:providers scopes? " + isValid);
+console.log(`Client has super:contacts and list:providers scopes? ${isValid}`);
 
-// Client has super:contacts and list:providers scopes? true
-// Client has super:contacts and list:providers scopes? false
+/**
+ * Output if client has scopes: 
+ * Client has super:contacts and list:providers scopes? true
+ * 
+ * Output if client hasn't scopes:
+ * Client has super:contacts and list:providers scopes? false
+*/
 ```

@@ -4,7 +4,7 @@ const config = require('../../config.js');
 
 const API_VERSION = 'v1';
 const API_SERVICE = 'oauth2';
-const API_RESOURCE = 'organizations';
+const API_RESOURCE = 'organizations/members';
 
 // Implement a function to get the token from the cache myCache
 function getTokenFromCache() {
