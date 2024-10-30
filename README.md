@@ -82,6 +82,7 @@ const notifications = await emfClient.notifications.push.list({limit: 5});
 |  | catalogues | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 | contacts  | customers | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | providers | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
+|  | groups | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | addresses | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 | ubications  | shops | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | warehouses | Push notifications | ✅ | ✅ | ✅ | ✅ | ✅ |
