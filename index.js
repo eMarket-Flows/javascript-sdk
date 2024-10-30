@@ -4,6 +4,7 @@
 
 const config = require('./config.js');
 const axios = require('axios');
+const myCache = require("./cache/cache.js");
 
 class client {
     /**

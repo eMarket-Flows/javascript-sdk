@@ -1,6 +1,6 @@
 {
   "name": "@emarketflows/javascript-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Javascript SDK client to manage eMarketFlows API and services.",
   "main": "index.js",
   "scripts": {
