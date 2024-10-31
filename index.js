@@ -69,6 +69,7 @@ class client {
         // Calculate milliseconds from now to token.expires_in milliseconds
         const now = new Date();
         
+        // Calculate the time to refresh the token before it expires
         const expiresIn = (expiresInMs.getTime() - now.getTime());
         
         console.log(`[EMF_SDK] Token saved, expires in ${expiresIn}ms.`);
