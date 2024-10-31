@@ -91,10 +91,10 @@ class client {
             url: `${this.AUTH2_DOMAIN}/token`,
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: {
-            grant_type: 'client_credentials',
-            client_id: this.AUTH2_CLIENT_ID,
-            client_secret: this.AUTH2_CLIENT_SECRET,
-            scope: this.AUTH2_CLIENT_SCOPES
+                grant_type: 'client_credentials',
+                client_id: this.AUTH2_CLIENT_ID,
+                client_secret: this.AUTH2_CLIENT_SECRET,
+                scope: this.AUTH2_CLIENT_SCOPES
             }
         };
             
