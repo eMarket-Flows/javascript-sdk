@@ -71,8 +71,12 @@ class client {
         
         // Calculate the time to refresh the token before it expires
         const expiresIn = (expiresInMs.getTime() - now.getTime());
+
+        // Convert expiresIn to minutes
+        const expiresInMinutes = expiresIn / 60000;
         
-        console.log(`[EMF_SDK] Token saved, expires in ${expiresIn}ms.`);
+        console.log(`[EMF_SDK] Token saved, expires in ${expiresInMinutes} minutes.`);
+        console.log(`[EMF_SDK] Auto-refreshing enabled.`);
 
         // Start a timer to refresh the token before it expires
         setTimeout(self.refreshToken, expiresIn);
