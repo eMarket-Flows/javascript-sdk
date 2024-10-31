@@ -58,8 +58,8 @@ class client {
         if (!success) {
             console.error("[EMF_SDK] Fail saving token in cache.");
         
-            // Retry saving the token in 2 minutes
-            setTimeout(refreshToken, 120000);
+            // Retry saving the token in 1 minute
+            setTimeout(refreshToken, 60000);
             return;
         }
         
