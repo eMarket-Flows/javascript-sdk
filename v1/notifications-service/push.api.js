@@ -34,9 +34,9 @@ async function get(id) {
             throw new Error('Push notification not found');
         }
 
-        provider = response.data;
+        const push = response.data;
 
-        return provider;
+        return push;
     }
     catch (error) {
         throw error;
