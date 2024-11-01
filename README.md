@@ -164,6 +164,7 @@ const customer = await EmfClient.contacts.customers.remove(CUSTOMER_ID);
 | ubications  | stores | Organization stores | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | warehouses | Organization warehouses | ✅ | ✅ | ✅ | ✅ | ✅ |
 |  | corners | Organization corners | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ecommerce  | stores | Organization online stores | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ## [Authorization] Check client scopes
 

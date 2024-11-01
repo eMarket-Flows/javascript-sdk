@@ -4,6 +4,7 @@ const notifications = require('./notifications-service/index');
 const oauth2 = require('./oauth2-service/index');
 const inventory = require('./inventory-service/index');
 const ubications = require('./ubications-service/index');
+const ecommerce = require('./ecommerce-service/index');
 
 module.exports = {
     contacts,
@@ -11,5 +12,6 @@ module.exports = {
     notifications,
     oauth2,
     inventory,
-    ubications
+    ubications,
+    ecommerce
 };
