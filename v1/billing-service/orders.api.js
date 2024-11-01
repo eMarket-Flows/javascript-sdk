@@ -33,9 +33,7 @@ async function get(id) {
             throw new Error('Order not found');
         }
 
-        provider = response.data;
-
-        return provider;
+        return response.data;
     }
     catch (error) {
         throw error;
@@ -98,9 +96,7 @@ async function add(order) {
             throw new Error('Order not added');
         }
 
-        provider = response.data;
-
-        return provider;
+        return response.data;
     }
     catch (error) {
         throw error;

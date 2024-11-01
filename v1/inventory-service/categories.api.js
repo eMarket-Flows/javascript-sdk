@@ -34,9 +34,7 @@ async function get(id) {
             throw new Error('Product not found');
         }
 
-        provider = response.data;
-
-        return provider;
+        return response.data;
     }
     catch (error) {
         throw error;
