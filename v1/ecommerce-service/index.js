@@ -1,4 +1,4 @@
-const stores = require('./push.api');
+const stores = require('./stores.api');
 
 module.exports = {
     stores
